@@ -12,14 +12,17 @@ public class WeatherParameters {
     }
 
     public double getTemp() {
+
         return temp;
     }
 
     public void setTemp(double temp) {
+
         this.temp = temp;
     }
 
-    public LocalDateTime getLocalDateTime() {
+    public LocalDateTime getLocalDateTime()
+    {
         return localDateTime;
     }
 

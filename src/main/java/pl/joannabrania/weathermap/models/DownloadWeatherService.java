@@ -12,18 +12,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DownloadWeatherService {
+
     private static DownloadWeatherService INSTANCE = new DownloadWeatherService();
 
-    private DownloadWeatherService(){ }
+    private DownloadWeatherService(){
+
+    }
 
     public static DownloadWeatherService getInstance(){
         return INSTANCE;
     }
 
-    public List<WeatherParameters> getWeather(String cityName, String countryName){
-        String url = Config.URL_TO_API + cityName + "," + countryName + "&appid=" + Config.API_KEY;
+    public String getWeatherOneDay(String cityName, String countryName) {
+
+        String url = Config.URL_TO_API + cityName + ","+countryName+ "&appid=" + Config.API_KEY;
         String cleanJson = readWebsite(url);
 
+        JSONObject root = new JSONObject(cleanJson);
+
+        JSONObject main = root.getJSONObject("main");
+        double tmp = main.getDouble("temp");
+
+        return "Temp: " + (tmp - 273);
+    }
+
+        public List<WeatherParameters> getWeatherFiveDays(String cityName, String countryName ){
+
+        String url = Config.URL_TO_API2 + cityName +","+countryName+ "&appid=" + Config.API_KEY;
+        String cleanJson = readWebsite(url);
 
         JSONObject root = new JSONObject(cleanJson);
         JSONArray someList = root.getJSONArray("list");
