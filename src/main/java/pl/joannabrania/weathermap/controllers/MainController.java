@@ -6,7 +6,6 @@ import pl.joannabrania.weathermap.views.MainView;
 
 import java.util.Scanner;
 
-
 public class MainController {
 
     private MainView mainView;
