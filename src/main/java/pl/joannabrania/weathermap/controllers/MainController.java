@@ -4,7 +4,6 @@ import pl.joannabrania.weathermap.models.DownloadWeatherService;
 import pl.joannabrania.weathermap.models.WeatherParameters;
 import pl.joannabrania.weathermap.views.MainView;
 
-import java.util.List;
 import java.util.Scanner;
 
 
