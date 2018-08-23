@@ -25,7 +25,7 @@ public class DownloadWeatherService {
 
     public String getWeatherOneDay(String cityName, String countryName) {
 
-        String url = Config.URL_TO_API + cityName + ","+countryName+ "&appid=" + Config.API_KEY;
+        String url = Config.URL_TO_API + cityName + "," + countryName+ "&appid=" + Config.API_KEY;
         String cleanJson = readWebsite(url);
 
         JSONObject root = new JSONObject(cleanJson);
@@ -61,14 +61,13 @@ public class DownloadWeatherService {
             if(localDay != localDateTime.getDayOfYear()){
                 weatherParametersList.add(new WeatherParameters(tempSum / coutner, localDateTime.minusDays(1)));
                 localDay = localDateTime.getDayOfYear();
-
                 tempSum =  temp;
                 coutner = 1;
             }else{
+
                 coutner ++;
                 tempSum += temp;
             }
-
         }
         return weatherParametersList;
     }
